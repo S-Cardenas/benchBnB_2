@@ -1,20 +1,32 @@
 var React = require('react');
 var BenchStore = require('../../stores/bench');
+var ApiUtil = require('../../util/api_util');
 
 var _markers = [];
 
 var MyMap = React.createClass({
 
 	componentDidMount: function(){
-      var mapDOMNode = this.refs.map;
-      var mapOptions = {
-        center: {lat: 40.708180, lng: -74.017338},
-        zoom: 14
-      };
-      this.map = new google.maps.Map(mapDOMNode, mapOptions);
-
+      this._initializeMap();
 			this.listener = BenchStore.addListener(this._onChange);
     },
+
+  _initializeMap: function() {
+    var mapDOMNode = this.refs.map;
+    var mapOptions = {
+      center: {lat: 40.708180, lng: -74.017338},
+      zoom: 14
+    };
+    this.map = new google.maps.Map(mapDOMNode, mapOptions);
+    this._addMapListener();
+  },
+
+  _addMapListener: function() {
+    google.maps.event.addListener(this.map, 'idle', function() {
+      var bounds = this.map.getBounds();
+      ApiUtil.fetchInBounds(bounds);
+    }.bind(this));
+  },
 
 	_onChange: function() {
 		for (var i = 0; i < _markers.length; i++) {

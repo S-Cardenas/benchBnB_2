@@ -15,8 +15,6 @@ var BenchIndex = React.createClass({
 
   componentDidMount: function() {
     this.benchListener = BenchStore.addListener(this._onChange);
-
-    ApiUtil.fetchBenches();
   },
 
   componentWillUnmount: function() {
@@ -31,7 +29,7 @@ var BenchIndex = React.createClass({
     }.bind(this));
 
     return (
-      <ul>
+      <ul className="bench-index">
         {myBenches}
       </ul>
     );

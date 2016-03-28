@@ -14,8 +14,76 @@
  *= require_self
  */
 
+html, body, header, nav, h1, a, ul, li,
+strong, main, section, img, div, h2, p,
+form, fieldset, label, input, textarea,
+button, article, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+ ul {
+  list-style: none;
+}
 
 .map {
   width: 500px;
   height: 500px;
+  margin: auto;
+  position: relative;
+  top: 30px;
+}
+
+.main-title {
+  color: Blue;
+  float: left;
+  padding: 10px;
+}
+
+.nav-bar {
+  float: right;
+}
+
+.nav-bar li {
+  float: left;
+  padding: 10px;
+}
+
+.header-list {
+  display: block;
+  border: 1px solid blue;
+  width: 900px;
+  margin: auto;
+  height: 30px;
+  padding-bottom: 10px;
+}
+
+.bench-list {
+  font-size: 20px;
+  /*border: 1px solid blue;*/
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+  list-style: lower-roman;
+}
+
+.bench-index {
+
+}
+
+.bench-form {
+  border: 2px solid black;
+}
+
+.bench-form input {
+  border: 1px solid blue;
 }
